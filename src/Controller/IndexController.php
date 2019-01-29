@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Collection;
+use App\Entity\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -13,13 +14,17 @@ class IndexController extends AbstractController
      */
     public function index()
     {
-        $repository = $this->getDoctrine()->getRepository(Collection::class);
+        $repository  = $this->getDoctrine()->getRepository(Collection::class);
         $collections = $repository->findAll();
 
-        dump($collections);
+        $repositoryP = $this->getDoctrine()->getRepository(Product::class);
+        $products = $repositoryP->findBy([], [
+            'dateAdd' => 'DESC'
+        ], 8);
 
-        return $this->render(('index\index.html.twig'), [
-            'collections' => $collections
+        return $this->render('index/index.html.twig', [
+            'collections' => $collections,
+            'products'    => $products
         ]);
     }
 

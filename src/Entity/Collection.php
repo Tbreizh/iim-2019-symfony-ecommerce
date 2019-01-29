@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection as DoctrineCollection;;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -101,9 +102,9 @@ class Collection
     }
 
     /**
-     * @return Collection|Product[]
+     * @return DoctrineCollection|Product[]
      */
-    public function getProducts(): Collection
+    public function getProducts(): DoctrineCollection
     {
         return $this->products;
     }
@@ -129,5 +130,13 @@ class Collection
         }
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return $this->getName();
     }
 }
