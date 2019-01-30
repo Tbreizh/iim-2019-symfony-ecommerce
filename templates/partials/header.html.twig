@@ -44,8 +44,11 @@
                 <div class="header-wrapicon2">
                     <img src="{{ asset('images/icons/icon-header-02.png') }}" class="header-icon1 js-show-header-dropdown" alt="ICON">
                     <span class="header-icons-noti">0</span>
+                    {#<span class="header-icons-noti">{{ cart.nbrProduct }}</span>#}
 
                     {{ render(controller('App\\Controller\\CartController::partial')) }}
+                    {#{{ render(controller('App\\Controller\\CartController::partial2')) }}#}
+
                 </div>
             </div>
         </div>

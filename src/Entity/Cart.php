@@ -92,4 +92,13 @@ class Cart
         return $total;
     }
 
+//    public function getNbrProduct(){
+//        $nbr_product = 0;
+//        foreach ($this->getCartProducts() as $cartProduct) {
+//            $nbr_product += $cartProduct->getQuantity();
+//        }
+//
+//        return $nbr_product;
+//    }
+
 }
