@@ -9,12 +9,38 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Your Cart :</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/pgrimaud/Documents/dev/iim-2019-symfony-ecommerce/src/Controller/CartController.php'|file_link(0) }}">src/Controller/CartController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/pgrimaud/Documents/dev/iim-2019-symfony-ecommerce/templates/cart/index.html.twig'|file_link(0) }}">templates/cart/index.html.twig</a></code></li>
+    <ul class="header-cart-wrapitem">
+
+        {% for cartProduct in cart.cartProducts %}
+            {% set product = cartProduct.product %}
+            <li class="header-cart-item">
+                <div class="header-cart-item-img">
+                    <img src="{{ product.pictureUrl }}" alt="IMG">
+                </div>
+
+                <div class="header-cart-item-txt">
+                    <a href="#" class="header-cart-item-name">
+                        {{ product.name }}
+                    </a>
+
+                    <span class="header-cart-item-info">
+                    {{ cartProduct.quantity  }} x {{ price_format(product.price) }}
+                </span>
+                </div>
+            </li>
+        {% endfor %}
+
     </ul>
+    <BR><BR><BR>
+    <div class="header-cart-wrapbtn">
+        <!-- Button -->
+        <a href="{{ path('checkout_payment') }}" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+            Check Out
+        </a>
+    </div>
+
+
 </div>
 {% endblock %}
